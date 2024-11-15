@@ -1,7 +1,7 @@
 'use client'
 import { Button, FormControl, MenuItem, Paper, Select, SelectChangeEvent, Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -37,6 +37,7 @@ const AgentExpectationPage = () => {
   };
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', mt: 15 }}>
       <Typography className='mb-20 mt-3 font-Inder text-5xl' variant="h4">Agent Expectations</Typography>
       
@@ -99,7 +100,7 @@ const AgentExpectationPage = () => {
         onClose={() => setPopupOpen(false)} 
         onConfirm={handlePopupConfirm} 
       />
-    </Box>
+    </Box></Suspense>
   );
 };
 
